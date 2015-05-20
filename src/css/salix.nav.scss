@@ -1,0 +1,321 @@
+/* Breakpoints. */
+$lg: "screen and (min-width: 1200px)"; 
+$md: "screen and (min-width: 992px)"; 
+$sm: "screen and (min-width: 768px)";  
+$xs: "screen and (max-width: 767px)"; 
+
+
+/**
+ * General-purpose mixins.
+ */
+@mixin xs {
+    // Should not need to use this mixin, unless overriding. 
+  // Default should be mobile first. 
+    @media #{$xs}{ @content; }
+}
+
+@mixin sm {
+    @media #{$sm}{ @content; }
+    html.ie8 & { @content; }
+}
+
+@mixin md {
+    @media #{$md}{ @content; }
+    html.ie8 & { @content; }
+}
+
+@mixin lg {
+    @media #{$lg}{ @content; }
+    html.ie8 & { @content; }
+}
+
+@mixin ie8 {
+    html.ie8 & { @content; }
+}
+ 
+
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+
+#main-wrapper{ 
+    overflow:hidden;
+}
+
+#main-content{
+    margin-top: 80px;
+}
+
+.btn-nav {
+    display:block;
+    width:40px;
+    height:40px;
+    margin:0; 
+    text-indent:-9999px;
+    text-align:left; 
+    background:url('../images/icon-mobile-trigger.png') no-repeat 50% 50%; background-size:20px auto; 
+}
+
+/* MOBILE WRAPPER */
+#mobile-wrapper{
+    background: #ffffff;
+    @include xs{
+        @include vendor-prefix(transform, translateX(0%));
+        @include vendor-prefix(backface-visibility, hidden);
+        @include vendor-prefix(perspective, 1000);
+    }
+    .is-nav-animate &{
+        @include xs{
+            @include vendor-prefix(transition, transform 500ms ease-in-out);
+        }
+    }
+    .is-nav-open &{
+        @include xs{
+            @include vendor-prefix(transform, translateX(80%));
+        }
+        
+    }
+}
+
+/* MAIN HEADER */
+#main-header{
+    background: #ffffff;
+    position: fixed;
+    height: 80px;
+    z-index: 102;
+    width: 100%;
+    @include xs{
+        @include vendor-prefix(transform, translateX(0%));
+        @include vendor-prefix(backface-visibility, hidden);
+        @include vendor-prefix(perspective, 1000);
+    }
+    @include sm{
+        border-bottom: 1px solid #ccc;
+    }
+    .is-nav-animate &{
+        @include xs{
+            @include vendor-prefix(transition, transform 500ms ease-in-out);
+        }
+    }
+    .is-nav-open &{
+        @include xs{
+            @include vendor-prefix(transform, translateX(80%));
+        }
+    }
+}
+
+.main-header-logo{
+    display: block;
+    @include xs{
+        height: 30px;
+        margin: 0 auto;
+        width:80px;
+    }
+    @include sm{
+        position: absolute;
+        left: 20px;
+        top: 15px;
+    }
+}
+.main-header-logo img{
+    width: 100%;
+    display: block;
+}
+
+.main-header-top {
+    @include xs{
+        position: relative;
+        width: 100%;
+        min-height: 40px;
+        border-bottom: 1px solid #ccc;
+        z-index: 102;
+        padding: 5px 0; 
+    }
+
+}
+
+.main-header-top .btn-nav {
+    position:absolute;
+    @include xs{
+        top:0;
+        left:0; 
+    }
+    @include sm{
+        top: 0;
+        right: 20px;
+    }
+}
+
+/* MOBILE SHIELD: This class is used on a div to not allow user to click on body content when menu is open */
+.mobile-shield{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 103;
+    @include xs{
+        @include vendor-prefix(transform, translateX(0%));
+        @include vendor-prefix(backface-visibility, hidden);
+        @include vendor-prefix(perspective, 1000);
+    }
+    .is-nav-open &{
+        display: block;
+        @include xs{
+            @include vendor-prefix(transform, translateX(80%)); 
+        }
+        
+    }
+}
+
+/* PRIMARY MENU */
+.primary-menu{
+    background: #eeeeee;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    @include xs{
+        width: 80%;
+        left: 0;
+        display: none;
+    }
+    @include sm{
+        width: 20%;
+        right: 0;
+        z-index: 104;
+        display: block;
+        @include vendor-prefix(transform, translateX(100%));
+        @include vendor-prefix(backface-visibility, hidden);
+        @include vendor-prefix(perspective, 1000);
+    }
+    .is-nav-animate &{
+        @include xs{
+            display: block;
+        }
+        @include sm{
+            @include vendor-prefix(transition, transform 500ms ease-in-out);
+        }
+    }
+    .is-nav-open &{
+        @include xs{
+            display: block;
+        }
+        @include sm{
+            @include vendor-prefix(transform, translateX(0%));
+        }
+    }
+}
+
+.primary-menu-nav{
+    width:100%;
+}
+
+.primary-menu-container{
+    overflow:hidden;
+    height: 100%;
+} 
+
+.primary-menu .iScrollVerticalScrollbar{
+    top: 90px !important;
+    bottom: 10px !important;
+    right: 3px !important;
+    width: 3px !important;
+}
+.primary-menu .iScrollIndicator{
+    background: #ffffff !important;
+} 
+
+/* SECONDARY MENU */
+.secondary-menu{
+    @include xs{
+        height:40px;
+        border-bottom:1px solid #ccc; 
+    }
+}
+
+.secondary-menu-nav {
+    margin: 0;
+    padding: 0;
+    display: block;
+    list-style-type: none;
+    @include xs{
+        width: 100%;
+        height: 100%;
+    }
+    @include sm{
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 60px;
+    }
+    .is-nav-open &{
+        @include sm{
+            opacity: 0;
+        }
+    }
+}
+.secondary-menu-nav li {
+    float: left;
+    @include xs{
+        width:33.3333333%;
+        display: table;
+        border-right:1px solid #ccc;
+        font-size: 10px;
+        line-height: 12px;
+        height: 100%;
+    }
+    @include sm{
+        padding-left: 10px;
+    }
+    &:last-child{
+        border-right: none;
+    }
+}
+
+.secondary-menu-nav a{
+    @include xs{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+.secondary-menu-nav span {
+    @include xs{
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,351 @@
+#main-wrapper {
+  overflow: hidden; }
+
+#main-content {
+  margin-top: 80px; }
+
+.btn-nav {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  text-indent: -9999px;
+  text-align: left;
+  background: url('../images/icon-mobile-trigger.png') no-repeat 50% 50%;
+  background-color: green;
+  background-size: 20px auto; }
+
+/* MOBILE WRAPPER */
+#mobile-wrapper {
+  background: #ffffff; }
+  @media screen and (max-width: 767px) {
+    #mobile-wrapper {
+      -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -o-transform: translateX(0%);
+      transform: translateX(0%);
+      -webkit-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-perspective: 1000;
+      -ms-perspective: 1000;
+      -moz-perspective: 1000;
+      -o-perspective: 1000;
+      perspective: 1000; } }
+  @media screen and (max-width: 767px) {
+    .is-nav-animate #mobile-wrapper {
+      -webkit-transition: transform 500ms ease-in-out;
+      -ms-transition: transform 500ms ease-in-out;
+      -moz-transition: transform 500ms ease-in-out;
+      -o-transition: transform 500ms ease-in-out;
+      transition: transform 500ms ease-in-out; } }
+  @media screen and (max-width: 767px) {
+    .is-nav-open #mobile-wrapper {
+      -webkit-transform: translateX(80%);
+      -ms-transform: translateX(80%);
+      -moz-transform: translateX(80%);
+      -o-transform: translateX(80%);
+      transform: translateX(80%); } }
+
+/* MAIN HEADER */
+#main-header {
+  background: #ffffff;
+  position: fixed;
+  height: 80px;
+  z-index: 102;
+  width: 100%; }
+  @media screen and (max-width: 767px) {
+    #main-header {
+      -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -o-transform: translateX(0%);
+      transform: translateX(0%);
+      -webkit-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-perspective: 1000;
+      -ms-perspective: 1000;
+      -moz-perspective: 1000;
+      -o-perspective: 1000;
+      perspective: 1000; } }
+  @media screen and (min-width: 768px) {
+    #main-header {
+      border-bottom: 1px solid #ccc; } }
+  html.ie8 #main-header {
+    border-bottom: 1px solid #ccc; }
+  @media screen and (max-width: 767px) {
+    .is-nav-animate #main-header {
+      -webkit-transition: transform 500ms ease-in-out;
+      -ms-transition: transform 500ms ease-in-out;
+      -moz-transition: transform 500ms ease-in-out;
+      -o-transition: transform 500ms ease-in-out;
+      transition: transform 500ms ease-in-out; } }
+  @media screen and (max-width: 767px) {
+    .is-nav-open #main-header {
+      -webkit-transform: translateX(80%);
+      -ms-transform: translateX(80%);
+      -moz-transform: translateX(80%);
+      -o-transform: translateX(80%);
+      transform: translateX(80%); } }
+
+.main-header-logo {
+  display: block; }
+  @media screen and (max-width: 767px) {
+    .main-header-logo {
+      height: 30px;
+      margin: 0 auto;
+      width: 80px; } }
+  @media screen and (min-width: 768px) {
+    .main-header-logo {
+      position: absolute;
+      left: 20px;
+      top: 15px; } }
+  html.ie8 .main-header-logo {
+    position: absolute;
+    left: 20px;
+    top: 15px; }
+
+.main-header-logo img {
+  width: 100%;
+  display: block; }
+
+@media screen and (max-width: 767px) {
+  .main-header-top {
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+    border-bottom: 1px solid #ccc;
+    z-index: 102;
+    padding: 5px 0; } }
+
+.main-header-top .btn-nav {
+  position: absolute; }
+  @media screen and (max-width: 767px) {
+    .main-header-top .btn-nav {
+      top: 0;
+      left: 0; } }
+  @media screen and (min-width: 768px) {
+    .main-header-top .btn-nav {
+      top: 0;
+      right: 20px; } }
+  html.ie8 .main-header-top .btn-nav {
+    top: 0;
+    right: 20px; }
+
+/* MOBILE SHIELD: This class is used on a div to not allow user to click on body content when menu is open */
+.mobile-shield {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 103; }
+  @media screen and (max-width: 767px) {
+    .mobile-shield {
+      -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -o-transform: translateX(0%);
+      transform: translateX(0%);
+      -webkit-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-perspective: 1000;
+      -ms-perspective: 1000;
+      -moz-perspective: 1000;
+      -o-perspective: 1000;
+      perspective: 1000; } }
+  .is-nav-open .mobile-shield {
+    display: block; }
+    @media screen and (max-width: 767px) {
+      .is-nav-open .mobile-shield {
+        -webkit-transform: translateX(80%);
+        -ms-transform: translateX(80%);
+        -moz-transform: translateX(80%);
+        -o-transform: translateX(80%);
+        transform: translateX(80%); } }
+
+/* PRIMARY MENU */
+.primary-menu {
+  background: #eeeeee;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 0; }
+  @media screen and (max-width: 767px) {
+    .primary-menu {
+      width: 80%;
+      left: 0;
+      display: none; } }
+  @media screen and (min-width: 768px) {
+    .primary-menu {
+      width: 20%;
+      right: 0;
+      z-index: 104;
+      display: block;
+      -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -o-transform: translateX(100%);
+      transform: translateX(100%);
+      -webkit-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-perspective: 1000;
+      -ms-perspective: 1000;
+      -moz-perspective: 1000;
+      -o-perspective: 1000;
+      perspective: 1000; } }
+  html.ie8 .primary-menu {
+    width: 20%;
+    right: 0;
+    z-index: 104;
+    display: block;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -ms-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000; }
+  @media screen and (max-width: 767px) {
+    .is-nav-animate .primary-menu {
+      display: block; } }
+  @media screen and (min-width: 768px) {
+    .is-nav-animate .primary-menu {
+      -webkit-transition: transform 500ms ease-in-out;
+      -ms-transition: transform 500ms ease-in-out;
+      -moz-transition: transform 500ms ease-in-out;
+      -o-transition: transform 500ms ease-in-out;
+      transition: transform 500ms ease-in-out; } }
+  html.ie8 .is-nav-animate .primary-menu {
+    -webkit-transition: transform 500ms ease-in-out;
+    -ms-transition: transform 500ms ease-in-out;
+    -moz-transition: transform 500ms ease-in-out;
+    -o-transition: transform 500ms ease-in-out;
+    transition: transform 500ms ease-in-out; }
+  @media screen and (max-width: 767px) {
+    .is-nav-open .primary-menu {
+      display: block; } }
+  @media screen and (min-width: 768px) {
+    .is-nav-open .primary-menu {
+      -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      -o-transform: translateX(0%);
+      transform: translateX(0%); } }
+  html.ie8 .is-nav-open .primary-menu {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+
+.primary-menu-nav {
+  width: 100%; }
+
+.primary-menu-container {
+  overflow: hidden;
+  height: 100%; }
+
+.primary-menu .iScrollVerticalScrollbar {
+  top: 90px !important;
+  bottom: 10px !important;
+  right: 3px !important;
+  width: 3px !important; }
+
+.primary-menu .iScrollIndicator {
+  background: #ffffff !important; }
+
+/* SECONDARY MENU */
+@media screen and (max-width: 767px) {
+  .secondary-menu {
+    height: 40px;
+    border-bottom: 1px solid #ccc; } }
+
+.secondary-menu-nav {
+  margin: 0;
+  padding: 0;
+  display: block;
+  list-style-type: none; }
+  @media screen and (max-width: 767px) {
+    .secondary-menu-nav {
+      width: 100%;
+      height: 100%; } }
+  @media screen and (min-width: 768px) {
+    .secondary-menu-nav {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 60px; } }
+  html.ie8 .secondary-menu-nav {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 60px; }
+  @media screen and (min-width: 768px) {
+    .is-nav-open .secondary-menu-nav {
+      opacity: 0; } }
+  html.ie8 .is-nav-open .secondary-menu-nav {
+    opacity: 0; }
+
+.secondary-menu-nav li {
+  float: left; }
+  @media screen and (max-width: 767px) {
+    .secondary-menu-nav li {
+      width: 33.33333%;
+      display: table;
+      border-right: 1px solid #ccc;
+      font-size: 10px;
+      line-height: 12px;
+      height: 100%; } }
+  @media screen and (min-width: 768px) {
+    .secondary-menu-nav li {
+      padding-left: 10px; } }
+  html.ie8 .secondary-menu-nav li {
+    padding-left: 10px; }
+  .secondary-menu-nav li:last-child {
+    border-right: none; }
+
+@media screen and (max-width: 767px) {
+  .secondary-menu-nav a {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; } }
+
+@media screen and (max-width: 767px) {
+  .secondary-menu-nav span {
+    display: block; } }
+
+
+
+html, body{
+  padding: 0;
+  margin: 0;
+}
+
+
+main{
+  background-color: red;
+  height: 1000px;
+  margin: 0 !important;
+}
