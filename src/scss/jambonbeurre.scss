@@ -1,0 +1,139 @@
+/* Breakpoints variables and their mixins */
+$lg: "screen and (min-width: 1200px)"; 
+$md: "screen and (min-width: 992px)"; 
+$sm: "screen and (min-width: 768px)";  
+$xs: "screen and (max-width: 767px)"; 
+
+@mixin xs { 
+    @media #{$xs}{ @content; }
+}
+
+@mixin sm {
+    @media #{$sm}{ @content; }
+}
+
+@mixin md {
+    @media #{$md}{ @content; }
+}
+
+@mixin lg {
+    @media #{$lg}{ @content; }
+}
+
+/* Some basic css resets */
+
+body, html{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* jambon beurre variables */
+
+$jb-width: 80%;
+ 
+
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+
+.jb-main-wrapper{ 
+    overflow:hidden;
+    position: relative;
+    width: 100%;
+}
+
+.jb-mobile-wrapper{
+    background: orange;
+    padding-top: 60px; 
+    @include xs{
+        @include vendor-prefix(transform, translate3d(0%, 0%, 0%));
+        @include vendor-prefix(backface-visibility, hidden);
+        @include vendor-prefix(perspective, 1000);
+    }    
+    body.is-nav-animate &{
+        @include xs{
+            @include vendor-prefix(transition, transform 500ms ease-in-out);
+        }
+    }
+    body[data-jb-state="open"] &{
+        @include xs{
+            @include vendor-prefix(transform, translateX($jb-width));
+        }        
+    }   
+}
+
+.jb-sticky-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    width: 100%;
+    background-color: yellow;
+    z-index: 2;    
+    body.is-nav-animate &{
+        @include xs{
+            @include vendor-prefix(transition, transform 500ms ease-in-out);
+        }
+    }
+    body[data-jb-state="open"] &{
+        @include xs{
+            @include vendor-prefix(transform, translateX($jb-width));
+        }        
+    }
+
+}
+
+.jb-menu{
+    background-color: red;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    width: $jb-width;
+}
+
+.jb-menu-trigger{
+    outline: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    background-color: blue; 
+    cursor: pointer;
+}
+
+.jb-menu .iScrollVerticalScrollbar{
+    top: 5px !important;
+    bottom: 5px !important;
+    right: 3px !important;
+    width: 3px !important;
+}
+
+.jb-menu .iScrollIndicator{
+    background: black !important;
+    border: none !important;
+} 
+
+.jb-shield{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 100;
+    body[data-jb-state="open"] &{
+        display: block;
+    }     
+}
