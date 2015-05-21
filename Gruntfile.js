@@ -5,6 +5,35 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     bwr: grunt.file.readJSON('bower.json'),
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'src/scss',
+          src: ['*.scss'],
+          dest: 'dist/css',
+          ext: '.css'
+        }]
+      },
+      test: {
+        files: [{
+          expand: true,
+          cwd: 'src/scss',
+          src: ['*.scss'],
+          dest: 'test/css',
+          ext: '.css'
+        }]
+      }
+    },
+    watch: {
+      all: {
+        files: ['src/**/*.**'],
+        tasks: ['copy:testjs','sass:test'],
+        options: {
+          spawn: false,
+        }
+      }
+    },
     bump: {
       options: {
         files: ['package.json','bower.json'],
@@ -37,11 +66,17 @@ module.exports = function(grunt) {
       all: ['src/**/*.js']
     },
     copy: {
-      all: {
+      dist: {
         expand: true,
         cwd: 'src/',
         src: '**',
         dest: 'dist/',
+      },
+      testjs: {
+        expand: true,
+        cwd: 'src/scripts/',
+        src: '**',
+        dest: 'test/scripts/app',
       }
     },
     gitadd: {
@@ -98,6 +133,8 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass'); //css pre-compiler
   grunt.loadNpmTasks('grunt-bump'); //automate semver
   grunt.loadNpmTasks('grunt-conventional-changelog'); //automate changelog updates
   grunt.loadNpmTasks('grunt-contrib-jshint'); //validates files with JSHint
@@ -105,8 +142,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-git'); //allow to run git command with grunt
   grunt.loadNpmTasks('grunt-banner'); //add comment on top of files with the current library version
 
-  // Default task(s).
+  // Default task(s)./watch 
   grunt.registerTask('test', ['jshint:all']); //run all test tasks
+
 
   // Release task 
   /*    
@@ -139,7 +177,8 @@ module.exports = function(grunt) {
       };
 
       taskList.push('changelog');
-      taskList.push('copy:all');
+      taskList.push('copy:dist');
+      taskList.push('sass:dist');
       taskList.push('usebanner:dist');
       taskList.push('gitadd:dist');
       taskList.push('gitcommit:dist');
