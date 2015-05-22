@@ -28,11 +28,12 @@ module.exports = function(grunt) {
     watch: {
       all: {
         files: ['src/**/*.**'],
-        tasks: ['copy:testjs','sass:test'],
+        tasks: ['copy:testcore','copy:testvendor','sass:test'],
         options: {
-          spawn: false,
+          livereload: true,
+          keepAlive:true
         }
-      }
+      },
     },
     bump: {
       options: {
@@ -72,11 +73,17 @@ module.exports = function(grunt) {
         src: '**',
         dest: 'dist/',
       },
-      testjs: {
+      testcore: {
         expand: true,
         cwd: 'src/scripts/',
         src: '**',
-        dest: 'test/scripts/app',
+        dest: 'test/scripts/',
+      },
+      testvendor: {
+        expand: true,
+        cwd: 'bower_components/',
+        src: '**',
+        dest: 'test/scripts/vendor/',
       }
     },
     gitadd: {
@@ -144,6 +151,7 @@ module.exports = function(grunt) {
 
   // Default task(s)./watch 
   grunt.registerTask('test', ['jshint:all']); //run all test tasks
+  grunt.registerTask('server',['copy:testcore','copy:testvendor','sass:test', 'watch'])
 
 
   // Release task 
