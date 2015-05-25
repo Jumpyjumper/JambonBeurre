@@ -4,6 +4,6 @@
 
 #### Features
 
-* **core javascript:** first core library release (https://github.com/fmaronnaud/jambonbeurre/changesets/c272debf29c5506a47656ac700c88a1936217b2a)
+* **core javascript:** first core library release (https://github.com/fmaronnaud/jambonbeurre/commits/c272debf29c5506a47656ac700c88a1936217b2a)
 
 
