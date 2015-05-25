@@ -1,3 +1,5 @@
+@import "../../bourbon/_bourbon.scss";
+
 /* Breakpoints variables and their mixins */
 $lg: "screen and (min-width: 1200px)"; 
 $md: "screen and (min-width: 992px)"; 
@@ -31,15 +33,7 @@ body, html{
 /* jambon beurre variables */
 
 $jb-width: 80%;
- 
 
-@mixin vendor-prefix($name, $argument) {
-  -webkit-#{$name}: #{$argument};
-  -ms-#{$name}: #{$argument};
-  -moz-#{$name}: #{$argument};
-  -o-#{$name}: #{$argument};
-  #{$name}: #{$argument};
-}
 
 
 .jb-global-wrapper{ 
@@ -55,18 +49,18 @@ $jb-width: 80%;
     padding-top: 60px; 
     z-index: 1;
     @include xs{
-        @include vendor-prefix(transform, translate3d(0%, 0%, 0%));
-        @include vendor-prefix(backface-visibility, hidden);
-        @include vendor-prefix(perspective, 1000);
+        @include prefixer(backface-visibility, hidden, webkit);
+        @include prefixer(perspective, 1000, webkit);
+        @include transform(translateX(0));
     }    
     body.is-nav-animate &{
         @include xs{
-            @include vendor-prefix(transition, transform 500ms ease-in-out);
+            @include transition(-webkit-transform 300ms ease-in-out);
         }
     }
     body[data-jb-state="open"] &{
         @include xs{
-            @include vendor-prefix(transform, translateX($jb-width));
+            @include transform(translateX($jb-width));
         }        
     }   
 }
@@ -82,12 +76,12 @@ $jb-width: 80%;
     z-index: 2;    
     body.is-nav-animate &{
         @include xs{
-            @include vendor-prefix(transition, transform 500ms ease-in-out);
+            @include transition(-webkit-transform 300ms ease-in-out);
         }
     }
     body[data-jb-state="open"] &{
         @include xs{
-            @include vendor-prefix(transform, translateX($jb-width));
+            @include transform(translateX($jb-width));
         }        
     }
 
@@ -100,6 +94,16 @@ $jb-width: 80%;
     bottom: 0;
     z-index: 0;
     width: $jb-width;
+    @include sm{
+        right: 0;
+        width: 250px;
+        z-index: 5;
+        @include transition(-webkit-transform 300ms ease-in-out);
+        @include transform(translateX(250px));
+        body[data-jb-state="open"] &{
+             @include transform(translateX(0));
+        }
+    }
 }
 
 .jb-menu-trigger{
