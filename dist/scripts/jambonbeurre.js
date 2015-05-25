@@ -1,7 +1,22 @@
-define(['jquery', 'iscroll', 'hammerjs'], function ($) {
+/*
+* name:Jambonbeurre
+* version: 0.2.0 (May-25, 2015)
+
+* dependencies:
+  - jquery-~1.9
+  - iscroll-~5.1.3
+  - requirejs-~2.1.17
+  - hammerjs-~2.0.4
+
+* description: Hamburger menu for mobile and desktop
+*/
+
+
+define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
     var jambonBeurre = function (options) {
         this.opts = {
             scroll: true,
+            swipe: true,
             scrollcontainer: ".jb-scroll-container",
             menu: ".jb-menu",
             stickyheader: ".jb-sticky-header",
@@ -29,6 +44,19 @@ define(['jquery', 'iscroll', 'hammerjs'], function ($) {
                     self.showMenu(opts);
                 }
             });
+
+            if(opts.swipe){
+                var hammertime = new Hammer($(opts.content).get(0));
+                hammertime.on('swipe', function(ev) {
+                    if($("body").attr('data-jb-state') == 'open') {
+                        self.hideMenu(opts);
+                    } else {
+                        self.showMenu(opts);
+                    }
+                });
+            }        
+
+
         }; 
 
         this.setMenu = function(opts){
