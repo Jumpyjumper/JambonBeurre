@@ -1,8 +1,7 @@
-define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
+define(['jquery', 'iscroll'], function ($, Hammer) {
     var jambonBeurre = function (options) {
         this.opts = {
             scroll: true,
-            swipe: true,
             scrollcontainer: ".jb-scroll-container",
             menu: ".jb-menu",
             stickyheader: ".jb-sticky-header",
@@ -29,18 +28,7 @@ define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
                 } else {
                     self.showMenu(opts);
                 }
-            });
-
-            if(opts.swipe){
-                var hammertime = new Hammer($(opts.content).get(0));
-                hammertime.on('swipe', function(ev) {
-                    if($("body").attr('data-jb-state') == 'open') {
-                        self.hideMenu(opts);
-                    } else {
-                        self.showMenu(opts);
-                    }
-                });
-            }        
+            });      
 
 
         }; 
