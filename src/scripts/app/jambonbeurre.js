@@ -32,12 +32,7 @@ define(['jquery', 'iscroll'], function ($) {
         this.setMenu = function(opts){
             var menu = $(opts.menu);
             $("body").attr('data-jb-state', 'closed');
-            if
-            (
-                typeof(IScroll) != 'undefined' //if IScroll 
-                && $(opts.menu + ">" + opts.scrollcontainer).length > 0
-                && opts.scroll
-            ){                
+            if (typeof(IScroll) != 'undefined' && $(opts.menu + ">" + opts.scrollcontainer).length > 0 && opts.scroll){                
                 opts.menu_scroll = new IScroll(".jb-menu", { 
                     click: true,
                     scrollbars: true,
