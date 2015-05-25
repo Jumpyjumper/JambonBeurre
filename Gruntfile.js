@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         version: '<%= bwr.version %>',
         repository: '<%= bwr.homepage %>',
         commitLink: function(commitHash){
-          return grunt.file.readJSON('bower.json').homepage + '/changesets/' + commitHash;
+          return grunt.file.readJSON('bower.json').homepage + '/commits/' + commitHash;
         },
         issueLink: function(issueId){
           return 'http://genome.klick.com/tickets/#/details/' + issueId;
