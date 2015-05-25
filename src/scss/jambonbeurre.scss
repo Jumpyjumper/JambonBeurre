@@ -42,15 +42,18 @@ $jb-width: 80%;
 }
 
 
-.jb-main-wrapper{ 
+.jb-global-wrapper{ 
     overflow:hidden;
     position: relative;
     width: 100%;
 }
 
-.jb-mobile-wrapper{
-    background: orange;
+.jb-content-wrapper{
+    display: block;
+    position: relative;
+    background-color: #ffffff; 
     padding-top: 60px; 
+    z-index: 1;
     @include xs{
         @include vendor-prefix(transform, translate3d(0%, 0%, 0%));
         @include vendor-prefix(backface-visibility, hidden);
