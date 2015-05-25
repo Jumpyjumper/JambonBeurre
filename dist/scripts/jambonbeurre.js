@@ -1,4 +1,4 @@
-define(['jquery', 'iscroll'], function ($) {
+define(['jquery', 'iscroll', 'hammerjs'], function ($) {
     var jambonBeurre = function (options) {
         this.opts = {
             scroll: true,
@@ -14,6 +14,8 @@ define(['jquery', 'iscroll'], function ($) {
             var self = this, 
                 opts = $.extend({}, this.opts, options),
                 menu = $(opts.menu);
+
+            $(opts.content).append("<div class=\"jb-shield\"></div>");
             
             $(document).ready(function(){
                 self.setMenu(opts);
