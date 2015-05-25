@@ -1,12 +1,12 @@
 define(['jquery', 'iscroll'], function ($) {
     var jambonBeurre = function (options) {
         this.opts = {
-            menu_scroll: null,
+            scroll: true,
+            scrollcontainer: ".jb-scroll-container",
             menu: ".jb-menu",
-            menu_sticky_header: ".jb-sticky-header",
-            menu_scroll_container: ".jb-scroll-container",
-            menu_triggers: [".jb-menu-trigger",".jb-shield"],            
-            content_wrapper: ".jb-mobile-wrapper",
+            stickyheader: ".jb-sticky-header",
+            triggers: [".jb-menu-trigger",".jb-shield"],            
+            content: ".jb-content-wrapper",
             keys: [37, 38, 39, 40]             
         };
 
@@ -19,7 +19,7 @@ define(['jquery', 'iscroll'], function ($) {
                 self.setMenu(opts);
             });
 
-            $(opts.menu_triggers.join()).on('click.jb-menu', function(e) {
+            $(opts.triggers.join()).on('click.jb-menu', function(e) {
                 e.preventDefault();
                 if($("body").attr('data-jb-state') == 'open') {
                     self.hideMenu(opts);
@@ -32,11 +32,12 @@ define(['jquery', 'iscroll'], function ($) {
         this.setMenu = function(opts){
             var menu = $(opts.menu);
             $("body").attr('data-jb-state', 'closed');
-            if (typeof(IScroll) != 'undefined' && $(opts.menu + ">" + opts.menu_scroll_container).length > 0) {                
+            if (typeof(IScroll) != 'undefined' && $(opts.menu + ">" + opts.scrollcontainer).length > 0 && opts.scroll){                
                 opts.menu_scroll = new IScroll(".jb-menu", { 
                     click: true,
                     scrollbars: true,
-                    scrollbarClass: 'jb-scrollbar'
+                    scrollbarClass: 'jb-scrollbar',
+                    mouseWheel:true
                 });
             }       
         };
@@ -47,7 +48,7 @@ define(['jquery', 'iscroll'], function ($) {
                 .attr("data-jb-state", "closed")
                 .addClass("is-nav-animate");
 
-            $(self.opts.menu_sticky_header).css({ 
+            $(self.opts.stickyheader).css({ 
                 position: 'fixed',
                 top: 0
             });
@@ -62,7 +63,7 @@ define(['jquery', 'iscroll'], function ($) {
                 .attr("data-jb-state", "open")
                 .addClass("is-nav-animate");
 
-            $(self.opts.menu_sticky_header).css({ 
+            $(self.opts.stickyheader).css({ 
                 position: 'absolute',
                 top: $('body').scrollTop()
             });

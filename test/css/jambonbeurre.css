@@ -5,16 +5,19 @@ body, html {
   padding: 0; }
 
 /* jambon beurre variables */
-.jb-main-wrapper {
+.jb-global-wrapper {
   overflow: hidden;
   position: relative;
   width: 100%; }
 
-.jb-mobile-wrapper {
-  background: green;
-  padding-top: 60px; }
+.jb-content-wrapper {
+  display: block;
+  position: relative;
+  background-color: #ffffff;
+  padding-top: 60px;
+  z-index: 1; }
   @media screen and (max-width: 767px) {
-    .jb-mobile-wrapper {
+    .jb-content-wrapper {
       -webkit-transform: translate3d(0%, 0%, 0%);
       -ms-transform: translate3d(0%, 0%, 0%);
       -moz-transform: translate3d(0%, 0%, 0%);
@@ -31,14 +34,14 @@ body, html {
       -o-perspective: 1000;
       perspective: 1000; } }
   @media screen and (max-width: 767px) {
-    body.is-nav-animate .jb-mobile-wrapper {
+    body.is-nav-animate .jb-content-wrapper {
       -webkit-transition: transform 500ms ease-in-out;
       -ms-transition: transform 500ms ease-in-out;
       -moz-transition: transform 500ms ease-in-out;
       -o-transition: transform 500ms ease-in-out;
       transition: transform 500ms ease-in-out; } }
   @media screen and (max-width: 767px) {
-    body[data-jb-state="open"] .jb-mobile-wrapper {
+    body[data-jb-state="open"] .jb-content-wrapper {
       -webkit-transform: translateX(80%);
       -ms-transform: translateX(80%);
       -moz-transform: translateX(80%);
