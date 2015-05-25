@@ -6,9 +6,10 @@
   "license": "MIT",
   "homepage": "https://github.com/fmaronnaud/jambonbeurre",
   "dependencies": {
-    "jquery": ">=1.9",
+    "jquery": "~1.9",
     "iscroll": "~5.1.3",
-    "requirejs": "~2.1.17"
+    "requirejs": "~2.1.17",
+    "hammerjs": "~2.0.4"
   },
   "ignore": [
     "**/.*",
@@ -16,5 +17,6 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {}
 }

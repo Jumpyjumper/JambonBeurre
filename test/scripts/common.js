@@ -1,9 +1,10 @@
 requirejs.config({
-	"baseUrl": "scripts/",
+	"baseUrl": "",
 	"paths":{
-		"jquery": "vendor/jquery/jquery",
-		"iscroll": "vendor/iscroll/build/iscroll"
+		"jquery": "jquery/dist/jquery",
+		"iscroll": "iscroll/build/iscroll",
+		"hammerjs": "hammerjs/hammer"
 	}
 });
 
-requirejs(["main"]);
+requirejs(["scripts/main"]);

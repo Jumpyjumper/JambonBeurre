@@ -1,3 +1,3 @@
-require(['app/jambonbeurre'], function(JambonBeurre){
+require(['scripts/jambonbeurre'], function(JambonBeurre){
     new JambonBeurre();
 });

@@ -3,6 +3,7 @@
 	<head>
 	    <meta charset="utf-8">
 	    <link rel="stylesheet" type="text/css" href="css/jambonbeurre.css">
+	    <meta name="viewport" content="width=device-width" />
 	    <title>Jambon beurre menu example</title>
 	</head>
 	<body>
@@ -40,14 +41,11 @@
 				<p>Donec luctus tincidunt eros sit amet commodo. Mauris ultrices turpis sed justo suscipit gravida. Nam ullamcorper libero pulvinar mollis rutrum. Nulla quis mattis dui, at laoreet nunc. Nunc non justo est. Proin non imperdiet risus. Aliquam eget cursus dolor, id congue est. Vivamus at pretium nisi. Ut non bibendum mi, id imperdiet velit. Ut at metus massa. Vivamus feugiat, turpis at auctor facilisis, velit neque commodo mi, id elementum risus est quis elit.</p>
 				</p>
 
-	            <!-- The shield is used to avoid user clicking on content area when menu is open. Also it will close the menu by default when user click on content area. -->
-	             <div class="jb-shield"></div>  
-
 			</main>
 		</div>
 
 		<!-- We load requirejs and target our common.js file as main entry to first configure require but you chan target what ever file you are using as main entry -->
-		<script data-main="scripts/common.js" src="scripts/vendor/requirejs/require.js"></script>
+		<script data-main="scripts/common.js" src="requirejs/require.js"></script>
 
 		<!-- This is for livereload when grunt serrver is used to have real time workflow during development -->
 	    <script src="//localhost:35729/livereload.js"></script>
