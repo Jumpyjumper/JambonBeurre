@@ -186,7 +186,10 @@ module.exports = function(grunt) {
 
       taskList.push('changelog');
       taskList.push('copy:dist');
+      taskList.push('copy:testcore');
+      taskList.push('copy:testvendor');
       taskList.push('sass:dist');
+      taskList.push('sass:test');
       taskList.push('usebanner:dist');
       taskList.push('gitadd:dist');
       taskList.push('gitcommit:dist');
@@ -203,4 +206,4 @@ module.exports = function(grunt) {
 };
 
 
-
+'copy:testcore','copy:testvendor','sass:test'
