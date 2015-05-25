@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     watch: {
       all: {
         files: ['src/**/*.**'],
-        tasks: ['copy:testcore','copy:testvendor','sass:test'],
+        tasks: ['sass:test'],
         options: {
           livereload: true,
           keepAlive:true
@@ -72,18 +72,6 @@ module.exports = function(grunt) {
         cwd: 'src/',
         src: '**',
         dest: 'dist/',
-      },
-      testcore: {
-        expand: true,
-        cwd: 'src/scripts/',
-        src: '**',
-        dest: 'test/scripts/',
-      },
-      testvendor: {
-        expand: true,
-        cwd: 'bower_components/',
-        src: '**',
-        dest: 'test/scripts/vendor/',
       }
     },
     gitadd: {
@@ -137,10 +125,20 @@ module.exports = function(grunt) {
           src: ['dist/**/*.{js,scss,css}']
         }
       }
+    },
+    connect: {
+      site1: {
+        options: {
+          hostname: 'jambonbeurre.com',
+          port: 8000,
+          base: ['test/','bower_components/','src/']
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-sass'); //css pre-compiler
   grunt.loadNpmTasks('grunt-bump'); //automate semver
   grunt.loadNpmTasks('grunt-conventional-changelog'); //automate changelog updates
@@ -151,7 +149,7 @@ module.exports = function(grunt) {
 
   // Default task(s)./watch 
   grunt.registerTask('test', ['jshint:all']); //run all test tasks
-  grunt.registerTask('server',['copy:testcore','copy:testvendor','sass:test', 'watch'])
+  grunt.registerTask('server',['sass:test','connect','watch'])
 
 
   // Release task 
@@ -186,8 +184,6 @@ module.exports = function(grunt) {
 
       taskList.push('changelog');
       taskList.push('copy:dist');
-      taskList.push('copy:testcore');
-      taskList.push('copy:testvendor');
       taskList.push('sass:dist');
       taskList.push('sass:test');
       taskList.push('usebanner:dist');
