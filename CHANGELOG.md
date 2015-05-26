@@ -1,3 +1,12 @@
+<a name"0.3.0"></a>
+## 0.3.0 (2015-05-26)
+
+
+#### Features
+
+* **options:** add new options when initializing the library (https://github.com/fmaronnaud/jambonbeurre/commit/a25ea7b370aed38c14d895625ffba9f38f4c99f5)
+
+
 <a name"0.2.0"></a>
 ## 0.2.0 (2015-05-25)
 
