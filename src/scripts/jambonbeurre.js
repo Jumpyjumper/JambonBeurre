@@ -1,61 +1,84 @@
-define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
+define(['jquery'], function ($) {
     var jambonBeurre = function (options) {
+
         this.opts = {
             scroll: true,
-            swipe: true,
+            gesture: true,
+            click: true,
+            scrollbars: true,
+            mouseWheel:true,
+            gestureevent: 'swipe',
             scrollcontainer: ".jb-scroll-container",
             menu: ".jb-menu",
             stickyheader: ".jb-sticky-header",
             triggers: [".jb-menu-trigger",".jb-shield"],            
             content: ".jb-content-wrapper",
-            keys: [37, 38, 39, 40]             
+            keys: [32, 33, 34, 35, 36, 37, 38, 39, 40]            
         };
 
         this.init = function(){
             var self = this, 
-                opts = $.extend({}, this.opts, options),
-                menu = $(opts.menu);
+                opts = $.extend({}, this.opts, options);
 
-            $(opts.content).append("<div class=\"jb-shield\"></div>");
-            
+            self.domReady(opts);
+            self.menuGesture(opts);
+            self.menuScroll(opts);
+            self.setTriggers(opts);
+
+        };
+
+        this.domReady = function(opts){
             $(document).ready(function(){
-                self.setMenu(opts);
+                $("body").attr('data-jb-state', 'closed');
+                $(opts.content).append("<div class=\"jb-shield\"></div>");
             });
+        };
 
-            $(opts.triggers.join()).on('click.jb-menu', function(e) {
-                e.preventDefault();
-                if($("body").attr('data-jb-state') == 'open') {
-                    self.hideMenu(opts);
-                } else {
-                    self.showMenu(opts);
-                }
-            });
-
-            if(opts.swipe){
-                var hammertime = new Hammer($(opts.content).get(0));
-                hammertime.on('swipe', function(ev) {
+        this.setTriggers = function(opts){
+            self = this;
+            $(document).ready(function(){
+                $(opts.triggers.join()).on('click.jb-menu', function(e) {
+                    e.preventDefault();
                     if($("body").attr('data-jb-state') == 'open') {
-                        self.hideMenu(opts);
+                        self.hideMenu();
                     } else {
-                        self.showMenu(opts);
+                        self.showMenu();
                     }
                 });
-            }        
+            });      
+        };
 
+        this.menuGesture = function(opts){
+            if(opts.gesture){
+                require(["hammerjs"], function(Hammer){
+                    $(document).ready(function(){
+                        var hammertime = new Hammer($(opts.content).get(0), opts);
+                        hammertime.on(opts.gestureevent, function(ev) {
+                            if($("body").attr('data-jb-state') == 'open') {
+                                self.hideMenu(opts);
+                            } else {
+                                self.showMenu(opts);
+                            }
+                        });
+                    });
 
-        }; 
-
-        this.setMenu = function(opts){
-            var menu = $(opts.menu);
-            $("body").attr('data-jb-state', 'closed');
-            if (typeof(IScroll) != 'undefined' && $(opts.menu + ">" + opts.scrollcontainer).length > 0 && opts.scroll){                
-                opts.menu_scroll = new IScroll(".jb-menu", { 
-                    click: true,
-                    scrollbars: true,
-                    scrollbarClass: 'jb-scrollbar',
-                    mouseWheel:true
                 });
-            }       
+
+            }
+        };
+
+        this.menuScroll = function(opts){
+            if(opts.scroll){
+                require(["iscroll"], function(){
+                    if (typeof(IScroll) != 'undefined' && $(opts.menu + ">" + opts.scrollcontainer).length > 0 && opts.scroll){                
+                        opts.menu_scroll = new IScroll(".jb-menu", opts);
+                    } 
+                }); 
+            } 
+        };
+
+        this.isTouchDevice = function(){
+          return 'ontouchstart' in window || 'onmsgesturechange' in window;
         };
 
         this.hideMenu = function(){
@@ -64,13 +87,15 @@ define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
                 .attr("data-jb-state", "closed")
                 .addClass("is-nav-animate");
 
-            $(self.opts.stickyheader).css({ 
-                position: 'fixed',
-                top: 0
-            });
+            if(self.isTouchDevice()){
+                $(self.opts.stickyheader).css({ 
+                    position: 'fixed',
+                    top: 0
+                });
+            }
 
             self.stopAnimation();
-            this.enable_scroll();            
+            self.enableScroll();            
         };
 
         this.showMenu = function(){
@@ -79,13 +104,15 @@ define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
                 .attr("data-jb-state", "open")
                 .addClass("is-nav-animate");
 
-            $(self.opts.stickyheader).css({ 
-                position: 'absolute',
-                top: $('body').scrollTop()
-            });
+            if(self.isTouchDevice()){
+                $(self.opts.stickyheader).css({ 
+                    position: 'absolute',
+                    top: $('body').scrollTop()
+                });
+            }
 
             self.stopAnimation();
-            this.disable_scroll(); 
+            self.disableScroll(); 
         };
 
         this.preventDefault = function(e) {
@@ -94,7 +121,7 @@ define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
             e.returnValue = false;
         };
 
-        this.keydown = function(e) {
+        this.keyDown = function(e) {
             for (var i = self.opts.keys.length; i--;) {
                 if (e.keyCode === self.opts.keys[i]) {
                     self.preventDefault(e);
@@ -107,24 +134,34 @@ define(['jquery', 'hammerjs', 'iscroll'], function ($, Hammer) {
             self.preventDefault(e);
         };
 
-        this.disable_scroll = function() {
+        this.windowscroll = function(left, top){
+            window.scrollTo(window.scrollbarhorizontalposition, window.scrollbarverticalposition);
+        };
+
+        this.disableScroll = function() {
+            window.scrollbarhorizontalposition = window.pageXOffset || document.documentElement.scrollLeft;
+            window.scrollbarverticalposition = window.pageYOffset || document.documentElement.scrollTop;
+
+
             if (window.addEventListener) { 
                 window.addEventListener('DOMMouseScroll', self.wheel, false);
+                window.addEventListener('scroll', self.windowscroll, false);
             }
 
-            window.onmousewheel = document.onmousewheel = self.wheel;            
-            document.onkeydown = self.keydown;
+            window.onmousewheel = document.onmousewheel = self.wheel;          
+            document.onkeydown = self.keyDown;
             document.ontouchmove = function (e) { 
                 self.preventDefault(e);
             };
         };
 
-        this.enable_scroll = function() {
+        this.enableScroll = function() {
             if (window.removeEventListener) { 
                 window.removeEventListener('DOMMouseScroll', self.wheel, false); 
+                window.removeEventListener('scroll', self.windowscroll, false); 
             }
 
-            window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+            window.onmousewheel = document.onmousewheel = document.onkeyDown = null;
             document.ontouchmove = function (e) { 
                 return true;
             };
