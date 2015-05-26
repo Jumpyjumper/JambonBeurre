@@ -134,11 +134,46 @@ module.exports = function(grunt) {
           base: ['test/','bower_components/','src/']
         }
       }
+    },
+    uglify: {
+      dist: {
+        options: {
+          preserveComments: false,
+          sourceMap: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'dist/scripts',
+          src: ['*.js'],
+          dest: 'dist/scripts',
+          ext: '.min.js'
+        }]
+      }
+    },
+    cssmin: {
+      dist: {
+        options: {
+          sourceMap: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'dist/css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'dist/css',
+          ext: '.min.css'
+        }]
+      }
+    },
+    clean: {
+      dist: ["dist/"]
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-sass'); //css pre-compiler
   grunt.loadNpmTasks('grunt-bump'); //automate semver
   grunt.loadNpmTasks('grunt-conventional-changelog'); //automate changelog updates
@@ -183,9 +218,12 @@ module.exports = function(grunt) {
       };
 
       taskList.push('changelog');
+      taskList.push('clean:dist');
       taskList.push('copy:dist');
+      taskList.push('uglify:dist');
       taskList.push('sass:dist');
       taskList.push('sass:test');
+      taskList.push('cssmin:dist');
       taskList.push('usebanner:dist');
       taskList.push('gitadd:dist');
       taskList.push('gitcommit:dist');
@@ -200,6 +238,3 @@ module.exports = function(grunt) {
     
   });
 };
-
-
-'copy:testcore','copy:testvendor','sass:test'
