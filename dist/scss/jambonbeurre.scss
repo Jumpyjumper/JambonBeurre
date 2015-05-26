@@ -1,6 +1,6 @@
 /*
 * name:Jambonbeurre
-* version: 0.2.0 (May-25, 2015)
+* version: 0.3.0 (May-26, 2015)
 
 * dependencies:
   - jquery-~1.9
@@ -13,8 +13,6 @@
 
 
 @import "../../bourbon/_bourbon.scss";
-
-/* Breakpoints variables and their mixins */
 $lg: "screen and (min-width: 1200px)"; 
 $md: "screen and (min-width: 992px)"; 
 $sm: "screen and (min-width: 768px)";  
@@ -23,28 +21,22 @@ $xs: "screen and (max-width: 767px)";
 @mixin xs { 
     @media #{$xs}{ @content; }
 }
-
 @mixin sm {
     @media #{$sm}{ @content; }
 }
-
 @mixin md {
     @media #{$md}{ @content; }
 }
-
 @mixin lg {
     @media #{$lg}{ @content; }
 }
 
-/* Some basic css resets */
 
 body, html{
     margin: 0;
     padding: 0;
 }
 
-
-/* jambon beurre variables */
 
 $jb-width: 80%;
 

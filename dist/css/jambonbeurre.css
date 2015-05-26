@@ -1,6 +1,6 @@
 /*
 * name:Jambonbeurre
-* version: 0.2.0 (May-25, 2015)
+* version: 0.3.0 (May-26, 2015)
 
 * dependencies:
   - jquery-~1.9
@@ -12,13 +12,10 @@
 */
 
 
-/* Breakpoints variables and their mixins */
-/* Some basic css resets */
 body, html {
   margin: 0;
   padding: 0; }
 
-/* jambon beurre variables */
 .jb-global-wrapper {
   overflow: hidden;
   position: relative;

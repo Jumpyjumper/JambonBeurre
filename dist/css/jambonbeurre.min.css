@@ -1,0 +1,16 @@
+/*
+* name:Jambonbeurre
+* version: 0.3.0 (May-26, 2015)
+
+* dependencies:
+  - jquery-~1.9
+  - iscroll-~5.1.3
+  - requirejs-~2.1.17
+  - hammerjs-~2.0.4
+
+* description: Hamburger menu for mobile and desktop
+*/
+
+
+body,html{margin:0;padding:0}.jb-global-wrapper{overflow:hidden;position:relative;width:100%}.jb-content-wrapper{display:block;position:relative;background-color:#fff;padding-top:60px;z-index:1}.jb-sticky-header{position:fixed;top:0;left:0;right:0;height:40px;width:100%;background-color:#ff0;z-index:2}@media screen and (max-width:767px){.jb-content-wrapper{-webkit-backface-visibility:hidden;-webkit-perspective:1000;-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);-o-transform:translateX(0);transform:translateX(0)}body.is-nav-animate .jb-content-wrapper{-webkit-transition:-webkit-transform 300ms ease-in-out;-moz-transition:-webkit-transform 300ms ease-in-out;transition:-webkit-transform 300ms ease-in-out}body[data-jb-state=open] .jb-content-wrapper{-webkit-transform:translateX(80%);-moz-transform:translateX(80%);-ms-transform:translateX(80%);-o-transform:translateX(80%);transform:translateX(80%)}body.is-nav-animate .jb-sticky-header{-webkit-transition:-webkit-transform 300ms ease-in-out;-moz-transition:-webkit-transform 300ms ease-in-out;transition:-webkit-transform 300ms ease-in-out}body[data-jb-state=open] .jb-sticky-header{-webkit-transform:translateX(80%);-moz-transform:translateX(80%);-ms-transform:translateX(80%);-o-transform:translateX(80%);transform:translateX(80%)}}.jb-menu{background-color:red;position:fixed;top:0;bottom:0;z-index:0;width:80%}@media screen and (min-width:768px){.jb-menu{right:0;width:250px;z-index:5;-webkit-transition:-webkit-transform 300ms ease-in-out;-moz-transition:-webkit-transform 300ms ease-in-out;transition:-webkit-transform 300ms ease-in-out;-webkit-transform:translateX(250px);-moz-transform:translateX(250px);-ms-transform:translateX(250px);-o-transform:translateX(250px);transform:translateX(250px)}body[data-jb-state=open] .jb-menu{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);-o-transform:translateX(0);transform:translateX(0)}}.jb-menu-trigger{outline:0;border:none;padding:0;margin:0;width:40px;height:40px;background-color:#00f;cursor:pointer}.jb-menu .iScrollVerticalScrollbar{top:5px!important;bottom:5px!important;right:3px!important;width:3px!important}.jb-menu .iScrollIndicator{background:#000!important;border:none!important}.jb-shield{width:100%;height:100%;position:absolute;display:none;top:0;bottom:0;left:0;right:0;cursor:pointer;z-index:100}body[data-jb-state=open] .jb-shield{display:block}
+/*# sourceMappingURL=jambonbeurre.min.css.map */
