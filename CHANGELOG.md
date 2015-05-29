@@ -1,3 +1,12 @@
+<a name"0.4.0"></a>
+## 0.4.0 (2015-05-28)
+
+
+#### Features
+
+* **nojs:** add no javascript support (https://github.com/fmaronnaud/jambonbeurre/commit/330995495c294f5980a0be4afc1d04479b096b60)
+
+
 <a name"0.3.0"></a>
 ## 0.3.0 (2015-05-26)
 
