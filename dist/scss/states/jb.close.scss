@@ -1,0 +1,48 @@
+/*
+* name:Jambonbeurre
+* version: 0.4.0 (May-28, 2015)
+
+* dependencies:
+  - jquery-~1.9
+  - iscroll-~5.1.3
+  - requirejs-~2.1.17
+  - hammerjs-~2.0.4
+
+* description: Hamburger menu for mobile and desktop
+*/
+
+
+body[data-jb-state*="close"],
+body{
+	@include xs{
+		.jb-sticky-header{
+			@include transform(translateX(0));
+		}
+		.jb-menu{
+			@include transform(translateX(0));
+		}
+		.jb-content{
+			@include transform(translateX(0));
+		}
+		.jb-trigger{
+	    	@include transform(translateX(0));		
+		} 
+	}
+	@include sm{
+		.jb-sticky-header{
+			@include transform(translateX(0));
+		}
+		.jb-menu{
+			@include transform(translateX($jb-width-sm));
+		}
+		.jb-content{
+			@include transform(translateX(0));
+		}
+		.jb-trigger{
+	    	@include transform(translateX(0));		
+		}		
+	}
+}  
+
+
+        

@@ -1,0 +1,36 @@
+/*
+* name:Jambonbeurre
+* version: 0.4.0 (May-28, 2015)
+
+* dependencies:
+  - jquery-~1.9
+  - iscroll-~5.1.3
+  - requirejs-~2.1.17
+  - hammerjs-~2.0.4
+
+* description: Hamburger menu for mobile and desktop
+*/
+
+
+@import "../../bourbon/_bourbon.scss";
+$lg: "screen and (min-width: 1200px)"; 
+$md: "screen and (min-width: 992px)"; 
+$sm: "screen and (min-width: 768px)";  
+$xs: "screen and (max-width: 767px)"; 
+
+@mixin xs { 
+    @media #{$xs}{ @content; }
+}
+@mixin sm {
+    @media #{$sm}{ @content; }
+}
+@mixin md {
+    @media #{$md}{ @content; }
+}
+@mixin lg {
+    @media #{$lg}{ @content; }
+}
+
+
+$jb-width-xs: 80%;
+$jb-width-sm: 250px;

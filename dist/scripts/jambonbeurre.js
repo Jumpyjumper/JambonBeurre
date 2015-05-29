@@ -1,6 +1,6 @@
 /*
 * name:Jambonbeurre
-* version: 0.3.0 (May-26, 2015)
+* version: 0.4.0 (May-28, 2015)
 
 * dependencies:
   - jquery-~1.9
@@ -16,17 +16,18 @@ define(['jquery'], function ($) {
     var jambonBeurre = function (options) {
 
         this.opts = {
+            timeout: 300,
             scroll: true,
             gesture: true,
             click: true,
             scrollbars: true,
             mouseWheel:true,
-            gestureevent: 'swipe',
+            gestureevent: 'press',
             scrollcontainer: ".jb-scroll-container",
             menu: ".jb-menu",
             stickyheader: ".jb-sticky-header",
-            triggers: [".jb-menu-trigger",".jb-shield"],            
-            content: ".jb-content-wrapper",
+            triggers: [".jb-trigger",".jb-shield"],            
+            content: ".jb-content",
             keys: [32, 33, 34, 35, 36, 37, 38, 39, 40]            
         };
 
@@ -44,6 +45,7 @@ define(['jquery'], function ($) {
         this.domReady = function(opts){
             $(document).ready(function(){
                 $("body").attr('data-jb-state', 'closed');
+                $("body").attr('data-jb-ready', 'true');
                 $(opts.content).append("<div class=\"jb-shield\"></div>");
             });
         };
@@ -53,7 +55,7 @@ define(['jquery'], function ($) {
             $(document).ready(function(){
                 $(opts.triggers.join()).on('click.jb-menu', function(e) {
                     e.preventDefault();
-                    if($("body").attr('data-jb-state') == 'open') {
+                    if($("body[data-jb-state*=open]").length > 0) {
                         self.hideMenu();
                     } else {
                         self.showMenu();
@@ -65,6 +67,7 @@ define(['jquery'], function ($) {
         this.menuGesture = function(opts){
             if(opts.gesture){
                 require(["hammerjs"], function(Hammer){
+                    delete Hammer.defaults.cssProps.userSelect;
                     $(document).ready(function(){
                         var hammertime = new Hammer($(opts.content).get(0), opts);
                         hammertime.on(opts.gestureevent, function(ev) {
@@ -86,7 +89,10 @@ define(['jquery'], function ($) {
                 require(["iscroll"], function(){
                     if (typeof(IScroll) != 'undefined' && $(opts.menu + ">" + opts.scrollcontainer).length > 0 && opts.scroll){                
                         opts.menu_scroll = new IScroll(".jb-menu", opts);
-                    } 
+                    }
+                    $(window).on("resize", function(e){
+                        opts.menu_scroll.refresh();
+                    }); 
                 }); 
             } 
         };
@@ -98,8 +104,7 @@ define(['jquery'], function ($) {
         this.hideMenu = function(){
             self = this;
             $("body")
-                .attr("data-jb-state", "closed")
-                .addClass("is-nav-animate");
+                .attr("data-jb-state", "animate closed");
 
             if(self.isTouchDevice()){
                 $(self.opts.stickyheader).css({ 
@@ -108,6 +113,11 @@ define(['jquery'], function ($) {
                 });
             }
 
+
+            setTimeout(function(){
+                $("body").attr("data-jb-state", "closed");
+            },300);
+
             self.stopAnimation();
             self.enableScroll();            
         };
@@ -115,8 +125,7 @@ define(['jquery'], function ($) {
         this.showMenu = function(){
             self = this;
             $("body")
-                .attr("data-jb-state", "open")
-                .addClass("is-nav-animate");
+                .attr("data-jb-state", "animate open");
 
             if(self.isTouchDevice()){
                 $(self.opts.stickyheader).css({ 
@@ -124,6 +133,10 @@ define(['jquery'], function ($) {
                     top: $('body').scrollTop()
                 });
             }
+
+            setTimeout(function(){
+                $("body").attr("data-jb-state", "open");
+            },300);
 
             self.stopAnimation();
             self.disableScroll(); 
