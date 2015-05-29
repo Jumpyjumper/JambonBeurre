@@ -1,0 +1,32 @@
+.jb-sticky-header{
+    background-color: #f5f5f5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    @include prefixer(backface-visibility, hidden, webkit);
+    @include prefixer(perspective, 1000, webkit);
+    z-index: 2;  
+
+    @include xs{
+        height: 40px;
+
+    }
+
+    @include sm{
+        height: 60px;
+    }
+
+    @include md{
+
+    }
+
+    @include lg{
+
+    }
+}
+
+
+
+

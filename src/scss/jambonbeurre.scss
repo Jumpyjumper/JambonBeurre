@@ -1,125 +1,43 @@
-@import "../../bourbon/_bourbon.scss";
-$lg: "screen and (min-width: 1200px)"; 
-$md: "screen and (min-width: 992px)"; 
-$sm: "screen and (min-width: 768px)";  
-$xs: "screen and (max-width: 767px)"; 
+@import "_mixins.scss";
 
-@mixin xs { 
-    @media #{$xs}{ @content; }
-}
-@mixin sm {
-    @media #{$sm}{ @content; }
-}
-@mixin md {
-    @media #{$md}{ @content; }
-}
-@mixin lg {
-    @media #{$lg}{ @content; }
-}
+
+
+@import "modules/jb.content.scss";
+@import "modules/jb.menu.scss";
+@import "modules/jb.trigger.scss";
+@import "modules/jb.stickyheader.scss";
+@import "states/jb.animate.scss";
+@import "states/jb.open.scss";
+@import "states/jb.close.scss";
+
+
+
 
 
 body, html{
     margin: 0;
     padding: 0;
 }
+ 
 
 
-$jb-width: 80%;
 
 
 
-.jb-global-wrapper{ 
+
+.jb-wrapper{ 
     overflow:hidden;
     position: relative;
     width: 100%;
-}
+}  
 
-.jb-content-wrapper{
-    display: block;
-    position: relative;
-    background-color: #ffffff; 
-    padding-top: 60px; 
-    z-index: 1;
-    @include xs{
-        @include prefixer(backface-visibility, hidden, webkit);
-        @include prefixer(perspective, 1000, webkit);
-        @include transform(translateX(0));
-    }    
-    body.is-nav-animate &{
-        @include xs{
-            @include transition(-webkit-transform 300ms ease-in-out);
-        }
-    }
-    body[data-jb-state="open"] &{
-        @include xs{
-            @include transform(translateX($jb-width));
-        }        
-    }   
-}
 
-.jb-sticky-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    width: 100%;
-    background-color: yellow;
-    z-index: 2;    
-    body.is-nav-animate &{
-        @include xs{
-            @include transition(-webkit-transform 300ms ease-in-out);
-        }
-    }
-    body[data-jb-state="open"] &{
-        @include xs{
-            @include transform(translateX($jb-width));
-        }        
-    }
 
-}
 
-.jb-menu{
-    background-color: red;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    z-index: 0;
-    width: $jb-width;
-    @include sm{
-        right: 0;
-        width: 250px;
-        z-index: 5;
-        @include transition(-webkit-transform 300ms ease-in-out);
-        @include transform(translateX(250px));
-        body[data-jb-state="open"] &{
-             @include transform(translateX(0));
-        }
-    }
-}
+ 
 
-.jb-menu-trigger{
-    outline: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    width: 40px;
-    height: 40px;
-    background-color: blue; 
-    cursor: pointer;
-}
 
-.jb-menu .iScrollVerticalScrollbar{
-    top: 5px !important;
-    bottom: 5px !important;
-    right: 3px !important;
-    width: 3px !important;
-}
 
-.jb-menu .iScrollIndicator{
-    background: black !important;
-    border: none !important;
-} 
 
 .jb-shield{
     width: 100%;
@@ -136,3 +54,6 @@ $jb-width: 80%;
         display: block;
     }     
 }
+
+
+

@@ -1,0 +1,22 @@
+@import "../../bourbon/_bourbon.scss";
+$lg: "screen and (min-width: 1200px)"; 
+$md: "screen and (min-width: 992px)"; 
+$sm: "screen and (min-width: 768px)";  
+$xs: "screen and (max-width: 767px)"; 
+
+@mixin xs { 
+    @media #{$xs}{ @content; }
+}
+@mixin sm {
+    @media #{$sm}{ @content; }
+}
+@mixin md {
+    @media #{$md}{ @content; }
+}
+@mixin lg {
+    @media #{$lg}{ @content; }
+}
+
+
+$jb-width-xs: 80%;
+$jb-width-sm: 250px;

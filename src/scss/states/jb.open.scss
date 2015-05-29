@@ -1,0 +1,39 @@
+body[data-jb-state*="open"],
+body:not([data-jb-ready]) .jb-nojs:checked ~
+{
+	.jb-shield{
+		display: block;
+	}
+	@include xs{
+		.jb-sticky-header{
+			@include transform(translateX($jb-width-xs)); 
+		}
+		.jb-menu{
+			@include transform(translateX(0));
+		}
+		.jb-content{
+			@include transform(translateX($jb-width-xs));
+		}
+		.jb-trigger{
+	    	@include transform(translateX(0));		
+		}
+	}
+	@include sm{
+		.jb-sticky-header{
+			@include transform(translateX($jb-width-sm*-1)); 
+		}
+		.jb-menu{
+			@include transform(translateX(0));
+		}
+		.jb-content{
+			@include transform(translateX(0));
+		}
+		.jb-trigger{
+	    	@include transform(translateX(0));		
+		} 
+	}
+} 
+
+
+
+            

@@ -1,0 +1,34 @@
+body[data-jb-state*="close"],
+body{
+	@include xs{
+		.jb-sticky-header{
+			@include transform(translateX(0));
+		}
+		.jb-menu{
+			@include transform(translateX(0));
+		}
+		.jb-content{
+			@include transform(translateX(0));
+		}
+		.jb-trigger{
+	    	@include transform(translateX(0));		
+		} 
+	}
+	@include sm{
+		.jb-sticky-header{
+			@include transform(translateX(0));
+		}
+		.jb-menu{
+			@include transform(translateX($jb-width-sm));
+		}
+		.jb-content{
+			@include transform(translateX(0));
+		}
+		.jb-trigger{
+	    	@include transform(translateX(0));		
+		}		
+	}
+}  
+
+
+        

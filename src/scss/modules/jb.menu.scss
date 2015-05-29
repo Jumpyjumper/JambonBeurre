@@ -1,0 +1,42 @@
+.jb-menu{
+    background-color: red;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    @include prefixer(backface-visibility, hidden, webkit);
+    @include prefixer(perspective, 1000, webkit);
+
+    body:not([data-jb-ready]) &{
+        overflow-y: scroll;
+    }
+
+    @include xs{
+        left: 0;
+        width: $jb-width-xs;
+        z-index: 0;
+    }
+    @include sm{
+        right: 0;
+        width: $jb-width-sm;
+        z-index: 3;
+    }
+    @include md{
+
+    }   
+    @include lg{
+
+    }
+}
+
+.jb-menu .iScrollVerticalScrollbar{
+    top: 5px !important;
+    bottom: 5px !important;
+    right: 3px !important;
+    width: 3px !important;
+}
+
+.jb-menu .iScrollIndicator{
+    background: black !important;
+    border: none !important;
+} 
+
