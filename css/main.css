@@ -1,0 +1,47 @@
+h1 {
+  text-align: left;
+  color: #FFFFFF;
+  margin: 10px 0; }
+
+h2 {
+  text-align: left;
+  color: #FFFFFF;
+  margin: 5px 0 10px 0; }
+
+.menu-primary {
+  margin: 0;
+  background-color: #2C3E50; }
+
+.menu-secondary {
+  background-color: #2C3E50;
+  height: 60px; }
+  .menu-secondary .menu-primary-button {
+    background-color: white;
+    cursor: pointer; }
+
+.header {
+  background-color: #2980B9; }
+  .header h1 {
+    color: #FFFFFF; }
+
+.features {
+  background-color: #3498DB; }
+  .features h1 {
+    color: #FFFFFF; }
+
+.compatibility {
+  background-color: #ECF0F1; }
+  .compatibility h1 {
+    color: #FFFFFF; }
+
+.install {
+  background-color: #E74C3C; }
+  .install h1 {
+    color: #FFFFFF; }
+
+.footer {
+  background-color: #2C3E50; }
+  .footer h1 {
+    color: #FFFFFF; }
+
+/*# sourceMappingURL=main.css.map */

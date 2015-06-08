@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       ghpages: {
         files: [{
           expand: true,
-          cwd: 'scss',
+          cwd: 'scss/',
           src: ['*.scss'],
           dest: 'css',
           ext: '.css'
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     },
     watch: {
       all: {
-        files: ['src/**/*.**'],
+        files: ['scss/**/*.**'],
         tasks: ['sass:ghpages'],
         options: {
           keepAlive:true
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass'); //css pre-compiler
 
-  grunt.registerTask('server',['sass:ghpages','watch'])
+  grunt.registerTask('server',['sass:ghpages','watch']) 
 
 
 };

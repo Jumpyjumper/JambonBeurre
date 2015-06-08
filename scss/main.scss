@@ -1,0 +1,78 @@
+@import "bourbon/_bourbon";
+@import "config";
+
+$text: $white;
+
+	
+h1{
+	text-align: left;
+	color: $text;
+	margin: 10px 0;
+}
+
+h2{
+	text-align: left;
+	color: $text;
+	margin: 5px 0 10px 0;
+}
+
+.menu-primary{
+	$background: $blue_dark;
+	margin: 0;	
+	background-color: $background;
+}
+
+.menu-secondary{
+	$background: $blue_dark;
+	background-color: $background;
+	height:60px;
+	.menu-primary-button{
+		background-color: white; //TODO
+		cursor: pointer;
+	}	
+}
+
+.header{
+	$background: $blue;
+	background-color: $background;
+	h1{
+		color: $text;
+	}
+}
+
+.features{
+	$background: $blue_light;
+	background-color: $background;
+	h1{
+		color: $text;
+	}
+}
+.compatibility{
+	$background: $grey_light;
+	background-color: $background;
+	h1{
+		color: $text;
+	}
+}
+
+
+.install{
+	$background: $red;
+	background-color: $background;
+	h1{
+		color: $text;
+	}
+}
+
+
+.footer{
+	$background: $blue_dark;
+	background-color: $background;
+	h1{
+		color: $text;
+	}
+}
+
+
+
+

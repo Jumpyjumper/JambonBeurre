@@ -9,6 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/jambonbeurre.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,12 +19,72 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <h1>Hello, world!</h1>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <body>
+    <div class="jb-wrapper">
+      <input type="checkbox" name="jb-nojs" id="jb-nojs" href="#" class="jb-nojs"/>
+      <div class="jb-sticky-header menu-secondary">
+        <label class="jb-trigger menu-primary-button" for="jb-nojs"></label>
+        <div class="container">
+          <div class="col-xs-12">
+            <h1>JambonBeurre.js</h1>
+          </div>
+        </div>
+      </div>
+      <menu class="jb-menu menu-primary">
+        <div class="jb-scroll-container">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div>
+      </menu>
+
+      <div class="jb-content">
+        <header class="header">
+          <div class="container">
+              <div class="col-xs-12">
+                <h2>What is JambonBeurre?</h2>          
+              </div>
+          </div>
+        </header>
+
+        <section class="features">
+          <div class="container">
+              <div class="col-xs-12">
+                <h2>Features</h2>          
+              </div>
+          </div>
+        </section>
+
+        <section class="compatibility">
+          <div class="container">
+              <div class="col-xs-12">
+                <h2>Browsers and devices compatibility</h2>          
+              </div>
+          </div>
+        </section>
+
+        <section class="install">
+          <div class="container">
+              <div class="col-xs-12">
+                <h2>Install</h2>          
+              </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="container">
+              <div class="col-xs-12">
+                <h2>Footer</h2>          
+              </div>
+          </div>
+        </footer>        
+      </div>
+    </div>
+    <script data-main="scripts/common.js" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
   </body>
 </html>
