@@ -1,7 +1,7 @@
 requirejs.config({
 	"baseUrl": "",
 	"paths":{
-		"jquery": "jquery/dist/jquery",
+		"jquery": "jquery/jquery",
 		"iscroll": "iscroll/build/iscroll",
 		"hammerjs": "hammerjs/hammer"
 	}
