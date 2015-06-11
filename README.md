@@ -1,18 +1,30 @@
 # jambonbeurre
 
-JambonBeurre is a tasty and progressively enhanced menu designed to be compatible with old and mordern browsers/devices.
+*JambonBeurre* is a tasty progressively enhanced off-canvas (hamburger) menu designed to be compatible with old and modern browsers/devices. 
 
-It is easy to use and implement and does not require JavaScript but when it is enabled the AMD library provides you a lot of options to make heavy customized and smooth responsive menus. 
+It is easy to use and implement and with no JavaScript requirement. 
 
-JambonBeurre supports gesture events and customized scrollbars via Hammerjs and IScroll dependencies.
+However, if you so choose, it is also implemented with JS as AMD style library that allows for heavly customized and super-smooth responsive menus.
 
 ## Features
 
+- 
 
 
 ## Options
 
+
+
+
 ### scroll
+
+```
+new JambonBeurre({
+	scroll: true
+});
+```
+
+
 
 ### gesture
 
