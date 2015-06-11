@@ -1,3 +1,3 @@
-require(['bootstrap', 'dist/scripts/jambonbeurre.min'], function(JambonBeurre){
+require(['jambonbeurre'], function(JambonBeurre){
     new JambonBeurre();
 });

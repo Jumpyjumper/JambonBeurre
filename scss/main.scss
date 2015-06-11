@@ -2,6 +2,7 @@
 @import "config";
 
 $text: $white;
+$text2: $black_light;
 
 	
 h1{
@@ -20,6 +21,12 @@ h2{
 	$background: $blue_dark;
 	margin: 0;	
 	background-color: $background;
+	ul{
+		list-style-type: none;
+	}
+	a{
+		color: $text;
+	}
 }
 
 .menu-secondary{
@@ -32,45 +39,39 @@ h2{
 	}	
 }
 
+.block{
+	@media all and (min-width: 768px){
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+}
+
 .header{
 	$background: $blue;
 	background-color: $background;
-	h1{
-		color: $text;
-	}
 }
 
 .features{
 	$background: $blue_light;
 	background-color: $background;
-	h1{
-		color: $text;
-	}
 }
 .compatibility{
 	$background: $grey_light;
 	background-color: $background;
-	h1{
-		color: $text;
+	h2{
+		color: $text2;
 	}
 }
 
-
-.install{
+.getting-started{
 	$background: $red;
 	background-color: $background;
-	h1{
-		color: $text;
-	}
 }
 
 
 .footer{
 	$background: $blue_dark;
 	background-color: $background;
-	h1{
-		color: $text;
-	}
 }
 
 
